@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="card">
+    <h1>Letters Game</h1>
+    <ul>
+     <% @letters.each do |letter| %>
+     <button id="btn-random">
+       <%= letter %>
+     </button>
+     <% end %>
+   </ul>
+   <h2>What is the longest word you can form?</h2>
+   <h1> Score Total:<%= session["points"] %></h1>
+   <h1>Round:<%= session["round"] %></h1>
+   <form action="/score" method="post" id="form-input">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="hidden" name="letters" value="<%= @letters %>">
+    <input class="form-control" type="text" name="word_input">
+    <input class="btn btn-primary" type="submit" value="Play!">
+  </form>
+</div>
+</div>
